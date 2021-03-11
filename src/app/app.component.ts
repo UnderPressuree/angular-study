@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'hello world,im glad to see u all';
+  title = 'hello world';
   count = 1;
   private lol = true;
   ngOnInit() {
