@@ -5,13 +5,27 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'hello world,im glad to see u all';
   count = 1;
   private lol = true;
   dynamicImage = 'https://angular.kr/assets/images/logos/angular/angular.png';
-  angularImage = 'https://angular.kr/assets/images/logos/angular/angular.png'
   inputText = ''
+  backgroundSwitch = false
+  catchme = false
+  obj = [
+    {title1: 'post 1', author: 'Philip', comments: [
+        {name: 'Alex', text: 'lorem1'},
+        {name: 'Alex', text: 'lorem2'},
+        {name: 'Alex', text: 'lorem3'},
+      ]},
+    {title1: 'post 1', author: 'Philip', comments: [
+        {name: 'Alex', text: 'lorem1'},
+        {name: 'Alex', text: 'lorem2'},
+        {name: 'Alex', text: 'lorem3'},
+      ]}
+  ]
+  now: Date = new Date()
   ngOnInit() {
     this.title = 'Hello btch';
     let maza = 123;

@@ -527,5 +527,42 @@
 
 <img src="{{dynamicImage}}" alt="react">
 <hr>
-<input type="text" [value]="inputText" (input)="onInput($event)">
+<label>
+  <input type="text" [value]="inputText" (input)="onInput($event)">
+</label>
 <p>{{inputText}}</p>
+
+
+<div class="catch-container">
+  <div *ngIf="catchme; else: leftP" class="right"></div>
+  <ng-template #leftP>
+  <div class="left"></div>
+  </ng-template>
+  <button (click)="catchme = !catchme" class="catchme">CATCH ME BITCH</button>
+</div>
+
+<div class="switch-container">
+<button (click)="backgroundSwitch = !backgroundSwitch">switch</button>
+<div [ngStyle]="{
+  width: '200px',
+  height: '200px',
+  background: backgroundSwitch ? 'green' : 'yellow'
+}">
+</div>
+</div>
+
+<ul style="list-style: none">
+  <li *ngFor="let post of obj">
+    <p>{{post.title1}} <b>{{post.author}}</b></p>
+    <ul>
+      <li *ngFor="let comment of post.comments">
+        <div>
+          <small>{{comment.name}}"</small>
+          <p>{{comment.text}}</p>
+        </div>
+    </ul>
+  </li>
+</ul>
+<p>
+  {{now | date}}
+</p>
