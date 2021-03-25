@@ -59,10 +59,20 @@
 <div class="container">
   <h1>Angular Components</h1>
 
-  <app-post-form></app-post-form>
+  <h2>Subheader</h2>K
+
+  <app-post-form
+    (onAdd)='updatePosts($event)'
+  ></app-post-form>
   <hr />
   <app-post
     *ngFor="let p of posts"
     [post]="p"
-  ></app-post>
+    (onRemove)="removePost($event)"
+  >
+    <small *ngIf="p.text.length>10; else: short">Большой пост</small>
+    <ng-template #short>
+      <small>Пост короткий</small>
+    </ng-template>
+  </app-post>
 </div>

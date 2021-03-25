@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostComponent } from './post/post.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -13,10 +14,10 @@ import { PostComponent } from './post/post.component';
     AppComponent,
     PostFormComponent,
     PostComponent
-    
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule

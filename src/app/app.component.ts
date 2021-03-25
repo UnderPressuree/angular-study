@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {timeInterval, timeout} from "rxjs/operators";
 
-interface Post {
+export interface Post {
   title: string
   text: string
   id?: number
@@ -66,4 +67,22 @@ export class AppComponent {
     {title: 'Want to learn Angular',text: 'still want to learn',id: 1},
     {title : 'Next block', text: 'About directives and pipes', id: 2}
   ]
+  ngOnInit() {
+    setTimeout(()=> {
+      console.log('TimeOut')
+      this.posts[0] = {
+        title: 'changed',
+        text: 'changed too',
+        id: 4
+      }
+    },5000)
+  }
+  updatePosts(post: Post) {
+    this.posts.unshift(post)
+    // console.log('Post',post)
+  }
+  removePost(id:number) {
+   console.log('id to remove',id)
+    this.posts = this.posts.filter(p =>p.id != id)
+  }
 }
