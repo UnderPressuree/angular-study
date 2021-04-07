@@ -1,0 +1,13 @@
+<!--<p [ngClass]="{'red': bananaInTheBox>120}">new-form works!</p>-->
+
+<!--<input [(ngModel)]="bananaInTheBox">-->
+
+<!--<button class="btn" (click)="showValue()">grgergeg</button>-->
+
+
+<form [formGroup]="nameForm" (ngSubmit)="showFormControlValue()">
+  <button type="submit" class="btn">Submit</button>
+  <input [formControl]="name">
+  <input [formControl]="surname">
+</form>
+
