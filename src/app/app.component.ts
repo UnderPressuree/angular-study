@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {timeInterval, timeout} from "rxjs/operators";
+import {Component, Injectable, OnInit} from '@angular/core';
+import {AppCounterServices} from "./services/app-counter.services";
+import {LocalCounterService} from "./services/local-counter.service";
 
 export interface Post {
   title: string
@@ -9,8 +10,10 @@ export interface Post {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [LocalCounterService]
 })
+
 // export class AppComponent implements OnInit {
 //   title = 'hello world,im glad to see u all';
 //   count = 1;
@@ -62,27 +65,57 @@ export interface Post {
 //   }
 // }
 //
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   posts: Post[] = [
-    {title: 'Want to learn Angular',text: 'still want to learn',id: 1},
-    {title : 'Next block', text: 'About directives and pipes', id: 2}
+    {title: 'Want to learn Angular', text: 'still want to learn', id: 1},
+    {title: 'Next block', text: 'About directives and pipes', id: 2}
   ]
+
   ngOnInit() {
-    setTimeout(()=> {
+    setTimeout(() => {
       console.log('TimeOut')
       this.posts[0] = {
         title: 'changed',
         text: 'changed too',
         id: 4
       }
-    },5000)
+    }, 5000)
   }
+
   updatePosts(post: Post) {
     this.posts.unshift(post)
     // console.log('Post',post)
   }
-  removePost(id:number) {
-   console.log('id to remove',id)
-    this.posts = this.posts.filter(p =>p.id != id)
+
+  removePost(id: number) {
+    console.log('id to remove', id)
+    this.posts = this.posts.filter(p => p.id != id)
+  }
+
+  isVisible = true;
+
+  e: number = Math.E
+
+  date: Date = new Date()
+
+  sportPost: Post[] = [
+    {title: 'Football', text: 'Best game in the world'},
+    {title: 'Hockey', text: 'Worst game in the world'}
+  ]
+
+  search = ''
+  searchField = 'title'
+
+  addNewPost() {
+    this.sportPost.unshift({
+      title: 'Angular 8',
+      text: 'learn'
+    })
+  }
+
+
+  constructor(public appCounterServices: AppCounterServices,
+              public localCounterService: LocalCounterService) {
   }
 }
